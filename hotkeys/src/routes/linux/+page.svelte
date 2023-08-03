@@ -7,6 +7,5 @@
                 <dd>Description</dd>
             </span>
         </div>
-        <!-- ... -->
     </dl>
 </div>

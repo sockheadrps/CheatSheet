@@ -1,9 +1,6 @@
 <script lang='ts'>
-	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-rocket.css';
-	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
-	// Most of your app wide CSS should be put in this file
 	import { goto } from "$app/navigation";
 	import '../app.postcss';
 	import { programs } from '../data/data';
@@ -14,14 +11,14 @@
 		ready = true;	
 	})
 
-	function capitalizeString(str) {
+	function capitalizeString(str: string) {
  		return str.charAt(0).toUpperCase() + str.slice(1);
 	
 	}
-	function handleClick(event) {
-		let src_elm = event.srcElement
-		if (ready){
-			let btns= Array.from(document.getElementsByClassName('btn'))
+	function handleClick(event: MouseEvent) {
+		let src_elm = event.target as HTMLElement | null;
+		if (ready && (src_elm !== null)){
+			let btns= Array.from(document.getElementsByClassName('btn')) as HTMLElement[];
 			btns.forEach(element => {
 				element.classList.remove('variant-filled-secondary')
 				element.classList.add('variant-filled-surface')
@@ -47,4 +44,3 @@
 </div>
 
 <slot />
-

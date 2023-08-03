@@ -1,67 +1,89 @@
 
 import { IconBrandVinted, IconAlignBoxCenterMiddleFilled, IconDeviceDesktopAnalytics } from "@tabler/icons-svelte";
 
-export const programs = [
+type Shortcut = {
+  name: string;
+  keys: string[];
+};
+
+type ShortcutGroup = {
+  name: string;
+  keystoke: string;
+  shortcuts: Shortcut[];
+};
+
+export type Program = {
+  name: string;
+  icon: any;
+  groups: ShortcutGroup[];
+};
+
+export const programs: Program[] = [
     {
         name: "qtile",
         icon: IconAlignBoxCenterMiddleFilled,
-        shortcuts: {
-            "Focus Window": [
-                {
-                    name: "Focus up",
-                    keys: ["m", "k"]
-                },
-                {
-                    name: "Focus down",
-                    keys: ["m", "j"]
-                },
-            ],
-            "Resize Window": [
-                {
-                    name: "Grow",
-                    keys: ["m", "l"]
-                },
-                {
-                    name: "Shrink",
-                    keys: ["m", "h"]
-                }
-            ]
-        }
+        groups: [
+            {
+                name: "Focus Window",
+                keystoke: "Normal mode",
+                shortcuts: [
+                    {
+                        name: "Focus up",
+                        keys: ["mod", "k"]
+                    },
+                    {
+                        name: "Focus down",
+                        keys: ["mod", "j"]
+                    },
+                ]
+            },
+            {
+                name: "Resize Window",
+                keystoke: "Normal mode",
+                shortcuts: [
+                    {
+                        name: "Grow",
+                        keys: ["mod", "l"]
+                    },
+                    {
+                        name: "Shrink",
+                        keys: ["mod", "h"]
+                    }
+                ]
+            }
+        ]
     },
 
     {
         name: "nvim",
         icon: IconBrandVinted,
-        shortcuts: {
-            "Cursor Movement": [
-                {
-                    name: "left",
-                    keys: ["h"]
-                },
-                {
-                    name: "right",
-                    keys: ["l"]
-                },
-                {
-                    name: "up",
-                    keys: ["k"]
-                },
-                {
-                    name: "down",
-                    keys: ["j"]
-                },
-            ],
-        }
-    },
-
-    {
-        name: "Linux",
-        icon: IconBrandVinted,
-        shortcuts: [
+        groups: [
             {
-                name: "searching and matching text files contained in the regular expressions",
-                key: "grep"
+                name: "Movement",
+                keystoke: "normal",
+                shortcuts: [
+                    {
+                        name: "Up",
+                        keys: ["k"]
+                    },
+                    {
+                        name: "Down",
+                        keys: ["j"]
+                    },
+                ]
+            },
+            {
+                name: "Exit",
+                keystoke: "command mode",
+                shortcuts: [
+                    {
+                        name: "save and quit",
+                        keys: [":", "w", "q"]
+                    },
+ 
+                ]
             },
         ]
-    },
-]
+    }
+];
+
