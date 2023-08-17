@@ -7,9 +7,12 @@
 
 <div class="h-full flex">
         {#if program !== undefined}
-            <div class="h-fit mx-auto flex mt-6 border-2 rounded-md border-gray-700">
+        <!-- main container -->
+            <div class="h-fit mx-auto flex mt-6 rounded-md border-gray-700">
+                <!-- Card container -->
                 {#each program.groups as groups}
-                    <div class="container bg-surface-900 mx-6 px-12 py-6">
+                    <div class="container bg-surface-900 rounded-xl mx-6 px-12 py-6">
+                        <!-- Title and mode container -->
                         <div class="flex flex-col">
                             <div class="text-3xl text-center">
                                 {groups.name}
@@ -18,11 +21,13 @@
                                 {groups.keystoke}
                             </div>
                         </div>
-
+                            <!-- Shortcut group container -->
                             <dl class="list-dl flex-col">
                                 {#each groups.shortcuts as shortcuts}
+                                <!-- Title area container -->
                                     <div>
                                         {#if groups.keystoke === 'command mode'}
+                                            <!-- keys (seperated for mode color)-->
                                             {#each shortcuts.keys as keys}
                                                 <span class="badge bg-secondary-800 h-11 w-11">{keys}</span>
                                             {/each}
@@ -31,7 +36,7 @@
                                                     <span class="badge bg-primary-800 h-11 w-11">{keys}</span>
                                                 {/each}
                                         {/if}
-                                        
+                                        <!-- shortcut name / description -->
                                         <span class="flex-auto">
                                             <dd>{shortcuts.name}</dd>
                                         </span>
